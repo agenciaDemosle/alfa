@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Parisienne&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply antialiased text-white bg-premium-black;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* Peso específico para títulos bold */
+  h1.font-bold, h2.font-bold, h3.font-bold,
+  h4.font-bold, h5.font-bold, h6.font-bold,
+  .font-bold {
+    font-weight: 800;
+  }
+
+  /* Peso para texto semibold */
+  .font-semibold {
+    font-weight: 700;
+  }
+
+  /* Peso para texto medium */
+  .font-medium {
+    font-weight: 600;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-premium-blue;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .font-heading-bold {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+
+  .font-script {
+    font-family: 'Parisienne', cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+}
+
+/* Mobile Menu Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-5%) scale(1.02);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes menuItemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glassmorphism effect */
+.menu-glass {
+  background: rgba(26, 26, 26, 0.98) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  position: fixed !important;
+  isolation: isolate !important;
+}
