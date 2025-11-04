@@ -7,7 +7,7 @@ interface SEOProps {
   image?: string
 }
 
-const SITE_URL = 'https://franciscal44.sg-host.com'
+const SITE_URL = 'https://piscinasalfa.cl'
 const SITE_NAME = 'Piscinas Alfa y Soluciones'
 
 export default function SEO({ title, description, path, image }: SEOProps) {

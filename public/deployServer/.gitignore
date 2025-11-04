@@ -1,0 +1,7 @@
+# Ignore contact logs (contain sensitive information)
+contacts.log
+*.log
+
+# Ignore any backup files
+*.bak
+*~

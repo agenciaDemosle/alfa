@@ -90,28 +90,25 @@ Si ya hay archivos en `public_html/`, elimínalos o respaldalos primero.
 1. Abre `deployServer/sendmail.php`
 2. Busca la línea:
    ```php
-   $to = 'contacto@franciscal44.sg-host.com';
+   $to = 'piscinasalfaysoluciones.48i@gmail.com';
    ```
-3. Cámbiala por tu email real:
-   ```php
-   $to = 'tu-email@dominio.com';
-   ```
+3. Verifica que el email sea correcto (ya está configurado)
 4. Guarda el archivo
 
 ## Paso 7: Verificar el Deploy
 
 ### 7.1 Verificar carga del sitio
 
-Visita: `https://franciscal44.sg-host.com`
+Visita: `https://piscinasalfa.cl`
 
 Deberías ver la página de inicio correctamente.
 
 ### 7.2 Probar rutas SPA
 
 Prueba cada ruta navegando directamente:
-- `https://franciscal44.sg-host.com/sobre-nosotros`
-- `https://franciscal44.sg-host.com/servicios`
-- `https://franciscal44.sg-host.com/contacto`
+- `https://piscinasalfa.cl/sobre-nosotros`
+- `https://piscinasalfa.cl/servicios`
+- `https://piscinasalfa.cl/contacto`
 
 Todas deberían cargar correctamente (no error 404).
 
@@ -120,12 +117,12 @@ Todas deberían cargar correctamente (no error 404).
 1. Ve a `/contacto`
 2. Llena el formulario
 3. Envía un mensaje de prueba
-4. Verifica que llegue al email configurado
+4. Verifica que llegue al email configurado (piscinasalfaysoluciones.48i@gmail.com)
 
 ### 7.4 Verificar archivos SEO
 
-- Robots.txt: `https://franciscal44.sg-host.com/robots.txt`
-- Sitemap: `https://franciscal44.sg-host.com/sitemap.xml`
+- Robots.txt: `https://piscinasalfa.cl/robots.txt`
+- Sitemap: `https://piscinasalfa.cl/sitemap.xml`
 
 Ambos deberían mostrar su contenido correctamente.
 

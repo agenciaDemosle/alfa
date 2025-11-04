@@ -270,91 +270,56 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <div className="inline-block mb-4 px-3 py-1 border border-premium-blue/30 rounded-full">
               <span className="text-premium-blue text-sm font-medium">Revestimientos</span>
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Elige el <span className="text-premium-blue font-script text-4xl sm:text-5xl md:text-6xl">revestimiento</span> perfecto
+              Tipos de <span className="text-premium-blue font-script text-4xl sm:text-5xl md:text-6xl">revestimientos</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Ofrecemos una amplia variedad de revestimientos premium de alta durabilidad y elegancia
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+              Ofrecemos una amplia variedad de colores y texturas premium de alta durabilidad y elegancia
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="space-y-6">
-                <div className="bg-premium-black border-2 border-premium-blue/30 rounded-xl p-6 hover:border-premium-blue transition-all">
-                  <h3 className="text-2xl font-bold text-white mb-3">Marble Dust</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Acabado suave y elegante con partículas de mármol. Ideal para piscinas residenciales con un toque de sofisticación.
-                  </p>
-                  <div className="mt-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-premium-blue" />
-                    <span className="text-gray-300">Vida útil: 10-12 años</span>
+          {/* Grid de Revestimientos */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((num, index) => (
+              <motion.div
+                key={num}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="relative group aspect-square rounded-lg overflow-hidden border-2 border-premium-blue/20 hover:border-premium-blue transition-all duration-300 cursor-pointer"
+              >
+                <img
+                  src={`/images/${num}.png`}
+                  alt={`Revestimiento tipo ${num}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-premium-black/80 via-premium-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                    <p className="text-white font-semibold text-xs sm:text-sm">Tipo {num}</p>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
 
-                <div className="bg-premium-black border-2 border-premium-blue/30 rounded-xl p-6 hover:border-premium-blue transition-all">
-                  <h3 className="text-2xl font-bold text-white mb-3">Diamond Brite</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Revestimiento premium con cristales de cuarzo que brindan un acabado brillante y ultra resistente.
-                  </p>
-                  <div className="mt-4 flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-premium-blue" />
-                    <span className="text-gray-300">Vida útil: 15+ años</span>
-                  </div>
-                </div>
-
-                <div className="bg-premium-black border-2 border-premium-blue/30 rounded-xl p-6 hover:border-premium-blue transition-all">
-                  <h3 className="text-2xl font-bold text-white mb-3">Revestimientos Personalizados</h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Colores y texturas personalizadas para crear el diseño único que siempre soñaste.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <Button
-                  to="/contacto"
-                  variant="primary"
-                  trackLabel="Contacto Revestimientos"
-                  trackLocation="home_revestimientos"
-                  className="bg-premium-blue text-premium-black hover:bg-premium-blue-light font-semibold w-full md:w-auto"
-                >
-                  Solicitar Cotización
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
+          {/* CTA */}
+          <div className="text-center">
+            <Button
+              to="/contacto"
+              variant="primary"
+              trackLabel="Contacto Revestimientos"
+              trackLocation="home_revestimientos"
+              className="bg-premium-blue text-premium-black hover:bg-premium-blue-light font-semibold w-full sm:w-auto px-6 sm:px-8"
             >
-              <img
-                src="/images/revestimientos.png"
-                alt="Tipos de revestimientos para piscinas"
-                className="w-full h-auto object-contain"
-                loading="eager"
-                fetchPriority="high"
-                style={{ imageRendering: '-webkit-optimize-contrast' }}
-              />
-              <div className="mt-4 text-center">
-                <p className="text-premium-blue font-semibold text-base sm:text-lg">
-                  Más de 20 colores y texturas disponibles
-                </p>
-              </div>
-            </motion.div>
+              Solicitar Cotización
+            </Button>
           </div>
         </div>
       </section>

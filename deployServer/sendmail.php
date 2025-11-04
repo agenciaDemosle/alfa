@@ -57,7 +57,7 @@ if (!empty($errors)) {
 }
 
 // Prepare email
-$to = 'contacto@franciscal44.sg-host.com'; // Change to actual email
+$to = 'piscinasalfaysoluciones.48i@gmail.com';
 $subject = 'Nuevo mensaje de contacto - Piscinas Alfa y Soluciones';
 
 $emailBody = "
@@ -71,11 +71,11 @@ Mensaje:
 {$message}
 
 ---
-Enviado desde: https://franciscal44.sg-host.com
+Enviado desde: Piscinas Alfa y Soluciones
 Fecha: " . date('Y-m-d H:i:s') . "
 ";
 
-$headers = "From: noreply@franciscal44.sg-host.com\r\n";
+$headers = "From: noreply@piscinasalfaysoluciones.com\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 

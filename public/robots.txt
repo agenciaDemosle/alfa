@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://franciscal44.sg-host.com/sitemap.xml
+Sitemap: https://piscinasalfa.cl/sitemap.xml

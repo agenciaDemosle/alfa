@@ -90,7 +90,7 @@ npm run preview
 
 2. **Estructura de archivos a subir:**
    ```
-   Tu dominio franciscal44.sg-host.com/
+   Tu dominio piscinasalfa.cl/
    ├── (contenido de dist/)
    │   ├── index.html
    │   ├── assets/
@@ -123,17 +123,17 @@ npm run preview
 
 5. **Configurar email en sendmail.php**
    - Abrir `deployServer/sendmail.php`
-   - Cambiar la línea:
+   - Verificar la línea (ya configurado):
      ```php
-     $to = 'contacto@franciscal44.sg-host.com'; // Cambiar al email real
+     $to = 'piscinasalfaysoluciones.48i@gmail.com';
      ```
 
 ### Verificación Post-Deploy
 
 - ✅ Verificar que todas las rutas funcionen (refrescar en `/servicios`, `/contacto`, etc.)
 - ✅ Probar el formulario de contacto
-- ✅ Verificar que `robots.txt` sea accesible: `https://franciscal44.sg-host.com/robots.txt`
-- ✅ Verificar que `sitemap.xml` sea accesible: `https://franciscal44.sg-host.com/sitemap.xml`
+- ✅ Verificar que `robots.txt` sea accesible: `https://piscinasalfa.cl/robots.txt`
+- ✅ Verificar que `sitemap.xml` sea accesible: `https://piscinasalfa.cl/sitemap.xml`
 - ✅ Comprobar SEO con herramientas como Google Search Console
 
 ## 🎯 Características
@@ -191,8 +191,8 @@ Los colores principales están en Tailwind. Para cambiar el azul (#2563eb):
 ## 📞 Soporte
 
 Para consultas sobre el proyecto:
-- Email: contacto@franciscal44.sg-host.com
-- Dominio: https://franciscal44.sg-host.com
+- Email: piscinasalfaysoluciones.48i@gmail.com
+- Dominio: https://piscinasalfa.cl
 
 ## 📝 Licencia
 

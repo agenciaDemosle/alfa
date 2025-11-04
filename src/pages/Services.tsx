@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import SEO from '@/components/layout/SEO'
 import { cn } from '@/lib/utils/cn'
 
@@ -7,7 +8,7 @@ const services = [
     id: 'revestimiento',
     title: 'Revestimiento Premium',
     subtitle: 'Marble Dust y Diamond Brite',
-    image: '/images/FB_IMG_1724246137065.jpg',
+    images: ['/images/revestimientopremium.jpeg'],
     description: 'Somos especialistas en renovar y proteger piscinas de hormigón mediante revestimientos de alta calidad que garantizan una superficie suave, duradera y con un color que permanece vibrante bajo el agua.',
     features: [
       'Retiro profesional de revestimiento antiguo',
@@ -21,7 +22,7 @@ const services = [
     id: 'remodelacion',
     title: 'Remodelación Estructural',
     subtitle: 'Renovación completa',
-    image: '/images/FB_IMG_1724246150262.jpg',
+    images: ['/images/remodelacion.jpeg', '/images/remodelacion1.jpeg', '/images/remodelacion2.jpeg'],
     description: 'Renovamos piscinas dañadas o desgastadas por el tiempo. Reparamos grietas, refuerzos en muros, nivelaciones, ampliaciones y rediseños.',
     features: [
       'Reparación de grietas estructurales',
@@ -35,7 +36,7 @@ const services = [
     id: 'mosaicos',
     title: 'Mosaicos Decorativos',
     subtitle: 'Elegancia y diseño',
-    image: '/images/FB_IMG_1738549552585.jpg',
+    images: ['/images/mosaicos.jpeg'],
     description: 'Damos personalidad al borde de agua, escaleras y zonas destacadas. Los mosaicos aportan elegancia, resistencia y un plus visual que convierte cualquier piscina en una obra de diseño.',
     features: [
       'Mosaicos en borde de agua',
@@ -49,7 +50,7 @@ const services = [
     id: 'hidraulicos',
     title: 'Sistemas Hidráulicos',
     subtitle: 'Circulación perfecta',
-    image: '/images/FB_IMG_1738549570361.jpg',
+    images: ['/images/FB_IMG_1738549570361.jpg'],
     description: 'Instalamos y mejoramos sistemas hidráulicos completos. Garantizamos una correcta circulación del agua para mayor eficiencia y mantenimiento sencillo.',
     features: [
       'Retornos optimizados',
@@ -63,7 +64,7 @@ const services = [
     id: 'iluminacion',
     title: 'Iluminación LED',
     subtitle: 'Ambientes únicos',
-    image: '/images/2.jpg',
+    images: ['/images/2.jpg'],
     description: 'Instalación de focos LED de alta eficiencia, con control remoto y efectos de color para crear ambientes únicos, seguros y llenos de vida durante la noche.',
     features: [
       'LED de alta eficiencia',
@@ -77,7 +78,7 @@ const services = [
     id: 'fugas',
     title: 'Detección de Fugas',
     subtitle: 'Tecnología avanzada',
-    image: '/images/3.jpg',
+    images: ['/images/3.jpg'],
     description: 'Localizamos fugas con tecnología y experiencia. Reparamos al instante para asegurar que el revestimiento permanezca en óptimas condiciones.',
     features: [
       'Detección precisa',
@@ -91,7 +92,7 @@ const services = [
     id: 'electricas',
     title: 'Instalaciones Eléctricas',
     subtitle: 'Certificadas y seguras',
-    image: '/images/hero.jpg',
+    images: ['/images/hero.jpg'],
     description: 'Colocación de tableros eléctricos, protecciones y automatizaciones que cumplen con normas de seguridad para garantizar funcionamiento estable.',
     features: [
       'Tableros certificados',
@@ -102,6 +103,66 @@ const services = [
     ],
   },
 ]
+
+// Image Carousel Component
+function ImageCarousel({ images, alt }: { images: string[], alt: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    if (images.length <= 1) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    }, 4000) // Change image every 4 seconds
+
+    return () => clearInterval(interval)
+  }, [images.length])
+
+  if (images.length === 1) {
+    return (
+      <img
+        src={images[0]}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        loading="lazy"
+      />
+    )
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      {images.map((image, index) => (
+        <img
+          key={image}
+          src={image}
+          alt={`${alt} - ${index + 1}`}
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-110",
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          )}
+          loading="lazy"
+        />
+      ))}
+
+      {/* Indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={cn(
+              "w-2 h-2 rounded-full transition-all duration-300",
+              index === currentIndex
+                ? "bg-premium-blue w-8"
+                : "bg-white/50 hover:bg-white/80"
+            )}
+            aria-label={`Ver imagen ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function Services() {
   return (
@@ -165,14 +226,8 @@ export default function Services() {
                     "relative h-[280px] sm:h-[350px] md:h-[500px] rounded-2xl overflow-hidden group",
                     index % 2 === 1 && "md:col-start-2"
                   )}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-premium-black via-premium-black/40 to-transparent"></div>
-                    <div className="absolute top-6 left-6 bg-premium-blue text-premium-black px-4 py-2 rounded-full font-bold text-lg">
+                    <ImageCarousel images={service.images} alt={service.title} />
+                    <div className="absolute top-6 left-6 bg-premium-blue text-premium-black px-4 py-2 rounded-full font-bold text-lg z-10">
                       {String(index + 1).padStart(2, '0')}
                     </div>
                   </div>

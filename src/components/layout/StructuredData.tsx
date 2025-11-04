@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-const SITE_URL = 'https://franciscal44.sg-host.com'
+const SITE_URL = 'https://piscinasalfa.cl'
 
 const organizationSchema = {
   '@context': 'https://schema.org',

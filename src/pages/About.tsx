@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { CheckCircle, Award, Users, Wrench } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import SEO from '@/components/layout/SEO'
 
 const stats = [
@@ -32,7 +33,32 @@ const values = [
   },
 ]
 
+const historyImages = [
+  '/images/FB_IMG_1735595751854.jpg',
+  '/images/FB_IMG_1735595769760.jpg',
+  '/images/FB_IMG_1735595773226.jpg',
+  '/images/FB_IMG_1735595790403.jpg',
+  '/images/historia.jpeg',
+  '/images/historia2.jpeg',
+  '/images/historia3.jpeg',
+  '/images/historia4.jpeg',
+  '/images/historia5.jpeg',
+  '/images/historia6.jpeg',
+]
+
 export default function About() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === historyImages.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 4000) // Cambiar imagen cada 4 segundos
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <>
       <SEO
@@ -135,34 +161,43 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-3 sm:space-y-4">
-                  <img
-                    src="/images/FB_IMG_1735595751854.jpg"
-                    alt="Piscina 1"
-                    className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg"
-                    loading="lazy"
-                  />
-                  <img
-                    src="/images/FB_IMG_1735595769760.jpg"
-                    alt="Piscina 2"
-                    className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-lg"
-                    loading="lazy"
-                  />
+              {/* Carrusel de imágenes de historia */}
+              <div className="relative h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden border-2 border-premium-blue/30 shadow-2xl shadow-premium-blue/10">
+                <div className="absolute inset-0">
+                  {historyImages.map((image, index) => (
+                    <div
+                      key={image}
+                      className={`absolute inset-0 transition-opacity duration-1000 ${
+                        index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      }`}
+                    >
+                      <img
+                        src={image}
+                        alt={`Nuestra historia ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-3 sm:space-y-4 pt-6 sm:pt-8">
-                  <img
-                    src="/images/FB_IMG_1735595773226.jpg"
-                    alt="Piscina 3"
-                    className="w-full h-40 sm:h-52 md:h-64 object-cover rounded-lg"
-                    loading="lazy"
-                  />
-                  <img
-                    src="/images/FB_IMG_1735595790403.jpg"
-                    alt="Piscina 4"
-                    className="w-full h-32 sm:h-40 md:h-48 object-cover rounded-lg"
-                    loading="lazy"
-                  />
+
+                {/* Gradiente overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-premium-black/50 to-transparent z-20 pointer-events-none"></div>
+
+                {/* Indicadores de puntos */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+                  {historyImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex
+                          ? 'bg-premium-blue w-8'
+                          : 'bg-white/50 hover:bg-white/75'
+                      }`}
+                      aria-label={`Ir a imagen ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </motion.div>

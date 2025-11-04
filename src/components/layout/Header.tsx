@@ -37,12 +37,12 @@ export default function Header() {
             className="flex items-center gap-3 group"
           >
             <img
-              src="/images/Logo.png"
+              src="/images/logo.svg"
               alt="Piscinas Alfa y Soluciones"
-              className="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-transform hover:scale-105"
+              className="h-14 sm:h-16 lg:h-18 w-auto object-contain"
               loading="eager"
               fetchPriority="high"
-              style={{ filter: 'contrast(1.1) brightness(1.05)' }}
+              style={{ imageRendering: 'crisp-edges' }}
             />
             <div className="hidden lg:block">
               <div className="text-lg font-bold text-white group-hover:text-premium-blue transition-colors">
@@ -133,13 +133,13 @@ export default function Header() {
               {/* Close Button & Logo */}
               <div className="flex justify-between items-center mb-8">
                 <img
-                  src="/images/Logo.png"
+                  src="/images/logo.svg"
                   alt="Logo"
-                  className="h-16 w-auto object-contain"
+                  className="h-14 w-auto object-contain"
                   loading="eager"
                   style={{
                     animation: 'menuItemFadeIn 0.4s ease-out 0.1s both',
-                    filter: 'contrast(1.1) brightness(1.05)'
+                    imageRendering: 'crisp-edges'
                   }}
                 />
                 <button

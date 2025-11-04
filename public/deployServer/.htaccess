@@ -1,0 +1,21 @@
+# Enable CORS
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</IfModule>
+
+# Set PHP handler
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Enable error logging but hide from public
+php_flag display_errors Off
+php_flag log_errors On
+
+# Protect log files
+<FilesMatch "\.(log)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
